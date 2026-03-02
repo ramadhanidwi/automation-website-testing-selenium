@@ -1,10 +1,10 @@
 package pages;
 
 import java.util.List;
-import java.util.Arrays;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 
 public class HomePage {
     private WebDriver driver;
@@ -32,19 +32,10 @@ public class HomePage {
     public HomePage(WebDriver driver){
         this.driver = driver;
     }
-
-    private List<String> normalizeProductName(Object productName) {
-        if (productName instanceof List) {
-            return (List<String>) productName;
-        } else {
-            return List.of(productName.toString());
-        }
-    }
     
-    public void addProductOnHomePage(String productName){
-        List<String> names = normalizeProductName(productName);
-        for(String name : names){
-            List<WebElement> listOfProducts = (List<WebElement>) driver.findElement(listProduct);
+    public void addProductOnHomePage(List<String> productName){
+        for(String name : productName){
+            List<WebElement> listOfProducts = (List<WebElement>) driver.findElements(listProduct);
             boolean found = false;
             for (WebElement product : listOfProducts){
                 if(product.getText().equalsIgnoreCase(name)){
@@ -59,10 +50,9 @@ public class HomePage {
         }
     }
 
-    public void removeProductOnHomePage(String productName){
-        List<String> names = normalizeProductName(productName);
-        for(String name : names){
-            List<WebElement> listOfProducts = (List<WebElement>) driver.findElement(listProduct)
+    public void removeProductOnHomePage(List<String> productName){
+        for(String name : productName){
+            List<WebElement> listOfProducts = (List<WebElement>) driver.findElements(listProduct);
             boolean found = false;
             for (WebElement product : listOfProducts){
                 if(product.getText().equalsIgnoreCase(name)){
@@ -72,7 +62,7 @@ public class HomePage {
                 }
             }
             if(!found){
-                System.out.println("Prodcut " + name + " tidak ditemukan!");
+                System.out.println("Product " + name + " tidak ditemukan!");
             }
         }
     }
