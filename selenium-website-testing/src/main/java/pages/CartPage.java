@@ -20,6 +20,9 @@ public class CartPage {
     private By firstNameLocator = By.xpath("//input[@id='first-name']");
     private By lastNameLocator = By.xpath("//input[@id='last-name']");
     private By postalCodeLocator = By.xpath("//input[@id='postal-code']");
+    private By continueButton = By.xpath("//input[@id='continue']");
+    private By finishButton = By.xpath("//button[@id='finish']");
+    private By backToShoppingButton = By.xpath("//button[@id='continue-shopping']");
     private By removeProductButton(String productName){
         String xpath = String.format("//div[contains(@class,'cart_item')]" + 
             "[.//div[contains(@class,'inventory_item_name') and normalize-space(.)='%s']]" + 
@@ -78,4 +81,15 @@ public class CartPage {
         driver.findElement(postalCodeLocator).sendKeys(postalCode);
     }
 
+    public void goToOverviewPage(){
+        driver.findElement(continueButton).click();
+    }
+
+    public void completingOrder(){
+        driver.findElement(finishButton).click();
+    }
+
+    public void continueShopping(){
+        driver.findElement(backToShoppingButton).click();
+    }
 }
