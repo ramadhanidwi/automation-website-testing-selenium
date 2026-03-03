@@ -16,6 +16,10 @@ public class CartPage {
 
     private By cartLink = By.xpath("//a[@class='shopping_cart_link']");
     private By listProductInCart = By.xpath("(//div[@class='inventory_item_name'])");
+    private By checkOutButton = By.xpath("//button[@id='checkout']");
+    private By firstNameLocator = By.xpath("//input[@id='first-name']");
+    private By lastNameLocator = By.xpath("//input[@id='last-name']");
+    private By postalCodeLocator = By.xpath("//input[@id='postal-code']");
     private By removeProductButton(String productName){
         String xpath = String.format("//div[contains(@class,'cart_item')]" + 
             "[.//div[contains(@class,'inventory_item_name') and normalize-space(.)='%s']]" + 
@@ -62,6 +66,16 @@ public class CartPage {
             }
         }
         return false;
+    }
+
+    public void goToCheckoutPage(){
+        driver.findElement(checkOutButton).click();
+    }
+
+    public void checkoutProduct(String firstName, String lastName, String postalCode){
+        driver.findElement(firstNameLocator).sendKeys(firstName);
+        driver.findElement(lastNameLocator).sendKeys(lastName);
+        driver.findElement(postalCodeLocator).sendKeys(postalCode);
     }
 
 }
