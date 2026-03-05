@@ -3,12 +3,14 @@ Automation Website Testing using Selenium
 website used for testing : https://www.saucedemo.com/
 
 ## Tech Stack 
+
 - Programming Language : Java (17.0.12)
 - Automation Library : Selenium 
 - Testing Framework : TestNG 
 - Build Tool : Maven
 
 ## Project Structure 
+
 selenium-website-testing
 ├── src
 │   ├── main
