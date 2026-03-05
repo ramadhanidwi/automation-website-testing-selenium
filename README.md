@@ -10,7 +10,7 @@ website used for testing : https://www.saucedemo.com/
 - Build Tool : Maven
 
 ## Project Structure 
-
+```
 selenium-website-testing
 ├── src
 │   ├── main
@@ -42,3 +42,4 @@ selenium-website-testing
 │           └── config.properties
 |
 └── pom.xml
+```
