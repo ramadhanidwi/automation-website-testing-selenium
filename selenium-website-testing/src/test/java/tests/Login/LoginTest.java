@@ -8,7 +8,6 @@ import pages.LoginPage;
 
 public class LoginTest extends base.BaseTest{
    
-
     @Test(priority = 1)
     public void loginSuccess(){
         driver.get(ConfigReader.getProperty("url"));

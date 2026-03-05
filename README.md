@@ -34,6 +34,8 @@ selenium-website-testing
 |       |       |   └── LoginTest.java
 │       │       └── RemoveProduct
 |       |           └── RemoveProductTest.java
+|       ├── testData
+|       |   └── LoginDataProvider.java
 │       └── resources
 │           └── config.properties
 |

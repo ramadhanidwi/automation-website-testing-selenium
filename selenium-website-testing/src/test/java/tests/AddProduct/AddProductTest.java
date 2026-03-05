@@ -16,13 +16,13 @@ import utils.ConfigReader;
 public class AddProductTest extends base.BaseTest{
     private By productTitle = By.xpath("//span[@class='title']");
     
-    @Test(priority = 1)
-    public void successAddSingleProductToCart(){
+    @Test(priority = 1, dataProviderClass = testData.LoginDataProvider.class, dataProvider = "loginData")
+    public void successAddSingleProductToCart(String username, String password){
         driver.get(ConfigReader.getProperty("url"));
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
         CartPage cartPage = new CartPage(driver);
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(username, password);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(productTitle));
         List<String> productsToAdd = Arrays.asList("Sauce Labs Backpack");
@@ -31,13 +31,13 @@ public class AddProductTest extends base.BaseTest{
         Assert.assertTrue(cartPage.checkProductInCart(productsToAdd));
     }
 
-    @Test(priority = 2)
-    public void successAddMultipleProductToCart(){
+    @Test(priority = 2, dataProviderClass = testData.LoginDataProvider.class, dataProvider = "loginData")
+    public void successAddMultipleProductToCart(String username, String password){
         driver.get(ConfigReader.getProperty("url"));
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
         CartPage cartPage = new CartPage(driver);
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(username, password);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(productTitle));
         List<String> productsToAdd = Arrays.asList("Sauce Labs Bike Light", "Sauce Labs Bolt T-Shirt");
@@ -46,13 +46,13 @@ public class AddProductTest extends base.BaseTest{
         Assert.assertTrue(cartPage.checkProductInCart(productsToAdd));
     }
 
-    @Test(priority = 3)
-    public void successAddProductOnProductPage(){
+    @Test(priority = 3, dataProviderClass = testData.LoginDataProvider.class, dataProvider = "loginData")
+    public void successAddProductOnProductPage(String username, String password){
         driver.get(ConfigReader.getProperty("url"));
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
         CartPage cartPage = new CartPage(driver);
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(username, password);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(productTitle));
         List<String> productsToAdd = Arrays.asList("Sauce Labs Backpack","Sauce Labs Bolt T-Shirt");
